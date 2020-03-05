@@ -41,9 +41,17 @@
     "MixinEnchantmentWeight",
     "MixinEnchantmentHelper",
     "MixinProtectionEnchantment",
-    "MixinChatScreen",
-    "MixinEntityRenderer",
-    "MixinLivingEntityRenderer"
+    "MixinCommandSuggestor",
+    "MixinLivingEntityRenderer",
+    "MixinSlot",
+    "MixinKeyboardInput",
+    "MixinKeyBinding",
+    "MixinMouse",
+    "MixinBlock",
+    "MixinMaterial",
+    "MixinFireBlock",
+    "MixinTextFieldWidget",
+    "MixinArmorStandEntityRenderer"
   ],
   "injectors": {
     "defaultRequire": 1

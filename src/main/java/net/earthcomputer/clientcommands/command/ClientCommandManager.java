@@ -40,12 +40,12 @@ public class ClientCommandManager {
         MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(message);
     }
 
-    public static void executeCommand(StringReader reader, String command) {
+    public static int executeCommand(StringReader reader, String command) {
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
         try {
-            player.networkHandler.getCommandDispatcher().execute(reader, new FakeCommandSource(player));
+            return player.networkHandler.getCommandDispatcher().execute(reader, new FakeCommandSource(player));
         } catch (CommandException e) {
-            ClientCommandManager.sendError(e.getMessageText());
+            ClientCommandManager.sendError(e.getTextMessage());
         } catch (CommandSyntaxException e) {
             ClientCommandManager.sendError(Texts.toText(e.getRawMessage()));
             if (e.getInput() != null && e.getCursor() >= 0) {
@@ -69,6 +69,7 @@ public class ClientCommandManager {
                     .styled(style -> style.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, error))));
             e.printStackTrace();
         }
+        return 1;
     }
 
     public static Text getCoordsTextComponent(BlockPos pos) {
